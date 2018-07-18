@@ -10,7 +10,7 @@ with open('README.md', 'r') as fh:
 
 setup(
     name='motherjokes',
-    version='0.1',
+    version='0.1.1',
     description='Transform sentences into awesome jokes about your mother (in russian language for now)',
     long_description=long_description,
     long_description_content_type="text/markdown",
