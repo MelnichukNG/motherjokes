@@ -1,7 +1,10 @@
-from setuptools import setup
+from setuptools import (
+    setup,
+    find_packages,
+)
 
 
-with open("README.md", "r") as fh:
+with open('README.md', 'r') as fh:
     long_description = fh.read()
 
 
@@ -14,11 +17,12 @@ setup(
     url='https://github.com/FFFEGO/motherjokes',
     author='Vladimir Kaigorodov',
     author_email='vladimir.kgrdv@gmail.com',
-    packages=['motherjokes'],
+    packages=find_packages(exclude=['*.tests']),
     install_requires=[
         'pymorphy2==0.8',
         'mosestokenizer==1.0.0',
     ],
+    python_requires='>=3.6',
     classifiers=(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
