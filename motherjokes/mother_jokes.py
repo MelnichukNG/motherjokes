@@ -21,6 +21,7 @@ class MotherJokeGenerator:
     pair_punctuation_space_remover = re.compile(r'(["\[({<])\s*(.*?)\s*(["\])}>])')
 
     unsuitable_verbs = 'быть бывать'.split()
+    suitable_verb_form = 'буду'.split()
 
     pronouns_p1 = 'я меня мне меня мной мы нас нам нас нами'.split()
     pronouns_p2 = 'ты тебя тебе тебя тобой вы вас вам вас вами'.split()
@@ -76,9 +77,10 @@ class MotherJokeGenerator:
             is_verb = word_morph.tag.POS == 'VERB'
 
             if not is_verb:
-                is_suitable_verb = word_morph.normal_form not in self.unsuitable_verbs
-                if not is_suitable_verb:
-                    continue
+                continue
+
+            if word_morph.normal_form in self.unsuitable_verbs and word not in self.suitable_verb_form:
+                continue
 
             if reverse_index <= self.min_words_after_verb:
                 break
